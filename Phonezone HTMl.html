@@ -1,0 +1,1803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>PHONEZONE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#ffffff;
+  color:#1a1a1a;
+  overflow-x:hidden;
+  line-height:1.6;
+}
+
+.container{
+  width:90%;
+  max-width:1280px;
+  margin:auto;
+}
+
+/* NAVBAR */
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:999;
+  background:rgba(255,255,255,0.7);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(0,0,0,0.08);
+  transition:all 0.3s ease;
+}
+
+nav.scrolled{
+  background:rgba(255,255,255,0.95);
+}
+
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 0;
+}
+
+.logo img{
+  width:350px;
+  transition:transform 0.3s ease;
+}
+
+.logo img:hover{
+  transform:scale(1.02);
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:48px;
+  list-style:none;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#1a1a1a;
+  font-weight:500;
+  font-size:15px;
+  position:relative;
+  transition:color 0.3s ease;
+}
+
+.nav-links a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  width:0%;
+  height:2px;
+  background:linear-gradient(90deg,#ff0066,#0088ff);
+  transition:width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after{
+  width:100%;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+  color:#0088ff;
+}
+
+.book-btn{
+  background:linear-gradient(135deg,#0088ff 0%,#0066ff 100%);
+  color:white;
+  text-decoration:none;
+  padding:12px 28px;
+  border-radius:50px;
+  font-weight:600;
+  font-size:14px;
+  box-shadow:0 8px 20px rgba(0,136,255,0.25);
+  transition:all 0.3s ease;
+  border:none;
+  cursor:pointer;
+}
+
+.book-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(0,136,255,0.35);
+}
+
+/* HERO */
+
+.hero{
+  padding-top:180px;
+  padding-bottom:120px;
+  background:linear-gradient(135deg,rgba(0,136,255,0.05) 0%,rgba(255,100,150,0.03) 100%);
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  top:-50%;
+  right:-10%;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle,rgba(0,136,255,0.1) 0%,transparent 70%);
+  border-radius:50%;
+}
+
+.hero-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+  position:relative;
+  z-index:1;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(0,136,255,0.1);
+  color:#0088ff;
+  padding:10px 16px;
+  border-radius:50px;
+  font-size:13px;
+  font-weight:600;
+  margin-bottom:32px;
+  border:1px solid rgba(0,136,255,0.2);
+  backdrop-filter:blur(10px);
+}
+
+.hero h1{
+  font-family:'Sora',sans-serif;
+  font-size:72px;
+  line-height:1.1;
+  font-weight:800;
+  margin-bottom:28px;
+  color:#1a1a1a;
+}
+
+.hero h1 span{
+  background:linear-gradient(135deg,#ff0066 0%,#ff6600 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.hero p{
+  color:#666;
+  font-size:18px;
+  line-height:1.8;
+  max-width:550px;
+  margin-bottom:48px;
+  font-weight:400;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:16px;
+  margin-bottom:60px;
+}
+
+.call-btn{
+  background:linear-gradient(135deg,#0088ff 0%,#0066ff 100%);
+  color:white;
+  text-decoration:none;
+  padding:14px 36px;
+  border-radius:50px;
+  font-weight:600;
+  font-size:15px;
+  box-shadow:0 10px 30px rgba(0,136,255,0.25);
+  transition:all 0.3s ease;
+  border:none;
+  cursor:pointer;
+}
+
+.call-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 40px rgba(0,136,255,0.35);
+}
+
+.whatsapp-btn{
+  background:white;
+  color:#1a1a1a;
+  text-decoration:none;
+  padding:14px 36px;
+  border-radius:50px;
+  font-weight:600;
+  border:2px solid #f0f0f0;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  transition:all 0.3s ease;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.whatsapp-btn:hover{
+  border-color:#0088ff;
+  background:rgba(0,136,255,0.03);
+  transform:translateY(-3px);
+}
+
+/* STATS */
+
+.stats{
+  display:flex;
+  gap:60px;
+}
+
+.stat{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.stat-icon{
+  font-size:32px;
+}
+
+.stat h3{
+  font-size:28px;
+  font-weight:700;
+  color:#1a1a1a;
+}
+
+.stat p{
+  font-size:13px;
+  color:#999;
+  font-weight:500;
+}
+
+/* HERO IMAGE */
+
+.hero-image{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.phone{
+  position:relative;
+  z-index:2;
+}
+
+.phone img{
+  width:100%;
+  max-width:700px;
+  filter:drop-shadow(0 30px 60px rgba(0,0,0,0.15));
+  animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{
+    transform:translateY(0px);
+  }
+  50%{
+    transform:translateY(-20px);
+  }
+}
+
+/* SLIDER */
+
+.slider-container{
+  position:relative;
+  width:100%;
+  height:500px;
+  background:#0a0a14;
+  overflow:hidden;
+  margin-bottom:0;
+}
+
+.slider-wrapper{
+  position:relative;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+.slides{
+  display:flex;
+  width:100%;
+  height:100%;
+  position:relative;
+}
+
+.slide{
+  position:absolute;
+  width:100%;
+  height:100%;
+  opacity:0;
+  transition:opacity 0.8s ease-in-out;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.slide.active{
+  opacity:1;
+  z-index:10;
+}
+
+.slide-image{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  position:relative;
+  animation:zoomSlide 8s ease-in-out forwards;
+}
+
+.slide.active .slide-image{
+  animation:zoomSlide 8s ease-in-out forwards;
+}
+
+@keyframes zoomSlide{
+  0%{
+    transform:scale(1);
+  }
+  100%{
+    transform:scale(1.05);
+  }
+}
+
+.slide-overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:linear-gradient(135deg,rgba(0,0,0,0.3) 0%,rgba(0,136,255,0.1) 100%);
+  top:0;
+  left:0;
+  z-index:2;
+}
+
+.slide-caption{
+  position:absolute;
+  bottom:50px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:20;
+  text-align:center;
+  color:white;
+  opacity:0;
+  animation:slideUp 0.8s ease-in-out 0.3s forwards;
+}
+
+.slide.active .slide-caption{
+  opacity:1;
+  animation:slideUp 0.8s ease-in-out 0.3s forwards;
+}
+
+@keyframes slideUp{
+  from{
+    opacity:0;
+    transform:translateX(-50%) translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+  }
+}
+
+.slide-caption h3{
+  font-family:'Sora',sans-serif;
+  font-size:42px;
+  font-weight:800;
+  margin-bottom:12px;
+  text-shadow:0 4px 12px rgba(0,0,0,0.4);
+}
+
+.slide-caption p{
+  font-size:18px;
+  color:#e2e8f0;
+  font-weight:500;
+  text-shadow:0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* SLIDER CONTROLS */
+
+.slider-controls{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 30px;
+  z-index:30;
+  pointer-events:none;
+}
+
+.slider-arrow{
+  width:50px;
+  height:50px;
+  background:rgba(255,255,255,0.15);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:all 0.3s ease;
+  color:white;
+  font-size:24px;
+  font-weight:bold;
+  pointer-events:all;
+  backdrop-filter:blur(10px);
+}
+
+.slider-arrow:hover{
+  background:rgba(0,136,255,0.3);
+  border-color:rgba(0,136,255,0.5);
+  transform:scale(1.1);
+}
+
+.slider-arrow:active{
+  transform:scale(0.95);
+}
+
+/* SLIDER DOTS */
+
+.slider-dots{
+  position:absolute;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:12px;
+  z-index:30;
+  justify-content:center;
+}
+
+.dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.3);
+  cursor:pointer;
+  transition:all 0.4s ease;
+  border:1px solid rgba(255,255,255,0.2);
+}
+
+.dot.active{
+  width:40px;
+  border-radius:6px;
+  background:linear-gradient(90deg,#0088ff,#0066ff);
+  border-color:#0088ff;
+  box-shadow:0 0 20px rgba(0,136,255,0.5);
+}
+
+.dot:hover{
+  background:rgba(255,255,255,0.5);
+  transform:scale(1.2);
+}
+
+/* SLIDER RESPONSIVE */
+
+@media(max-width:900px){
+  .slider-container{
+    height:350px;
+  }
+
+  .slide-caption h3{
+    font-size:28px;
+  }
+
+  .slide-caption p{
+    font-size:14px;
+  }
+
+  .slider-arrow{
+    width:40px;
+    height:40px;
+    font-size:18px;
+  }
+
+  .slider-controls{
+    padding:0 15px;
+  }
+
+  .slider-dots{
+    bottom:20px;
+    gap:8px;
+  }
+
+  .dot{
+    width:8px;
+    height:8px;
+  }
+
+  .dot.active{
+    width:24px;
+  }
+}
+
+@media(max-width:600px){
+  .slider-container{
+    height:280px;
+  }
+
+  .slide-caption h3{
+    font-size:20px;
+  }
+
+  .slide-caption p{
+    font-size:12px;
+    display:none;
+  }
+
+  .slider-arrow{
+    width:36px;
+    height:36px;
+    font-size:16px;
+  }
+
+  .slider-controls{
+    padding:0 10px;
+  }
+
+  .slider-dots{
+    bottom:15px;
+    gap:6px;
+  }
+
+  .dot{
+    width:6px;
+    height:6px;
+  }
+
+  .dot.active{
+    width:20px;
+  }
+}
+
+
+
+.section-title{
+  text-align:center;
+  margin-bottom:80px;
+}
+
+.section-title span{
+  color:#0088ff;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.section-title h2{
+  font-family:'Sora',sans-serif;
+  font-size:56px;
+  margin-top:16px;
+  font-weight:800;
+  color:#1a1a1a;
+}
+
+/* SERVICES */
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:32px;
+}
+
+.service-card{
+  background:white;
+  border-radius:20px;
+  padding:48px 32px;
+  text-align:center;
+  box-shadow:0 8px 24px rgba(0,0,0,0.08);
+  transition:all 0.4s ease;
+  border:1px solid #f0f0f0;
+  position:relative;
+  overflow:hidden;
+}
+
+.service-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(135deg,rgba(0,136,255,0.05) 0%,rgba(255,100,150,0.05) 100%);
+  opacity:0;
+  transition:opacity 0.4s ease;
+}
+
+.service-card:hover{
+  transform:translateY(-12px);
+  box-shadow:0 20px 50px rgba(0,136,255,0.15);
+  border-color:rgba(0,136,255,0.2);
+}
+
+.service-card:hover::before{
+  opacity:1;
+}
+
+.service-icon{
+  width:80px;
+  height:80px;
+  margin:auto;
+  margin-bottom:24px;
+  border-radius:50%;
+  background:linear-gradient(135deg,rgba(0,136,255,0.15) 0%,rgba(0,136,255,0.05) 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
+  transition:transform 0.3s ease;
+}
+
+.service-card:hover .service-icon{
+  transform:scale(1.1);
+}
+
+.service-card h3{
+  font-family:'Sora',sans-serif;
+  font-size:22px;
+  margin-bottom:14px;
+  font-weight:700;
+  color:#1a1a1a;
+}
+
+.service-card p{
+  color:#666;
+  line-height:1.8;
+  font-size:14px;
+}
+
+.view-btn{
+  display:inline-block;
+  margin-top:60px;
+  background:linear-gradient(135deg,#0088ff 0%,#0066ff 100%);
+  color:white;
+  text-decoration:none;
+  padding:16px 48px;
+  border-radius:50px;
+  font-weight:600;
+  font-size:15px;
+  box-shadow:0 10px 30px rgba(0,136,255,0.25);
+  transition:all 0.3s ease;
+  border:none;
+  cursor:pointer;
+}
+
+.view-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 40px rgba(0,136,255,0.35);
+}
+
+/* WHY */
+
+.why{
+  background:linear-gradient(135deg,#f8f9ff 0%,#fff8f5 100%);
+}
+
+.why-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+
+.why-left h2{
+  font-family:'Sora',sans-serif;
+  font-size:56px;
+  line-height:1.2;
+  margin-bottom:28px;
+  font-weight:800;
+  color:#1a1a1a;
+}
+
+.why-left h2 span{
+  background:linear-gradient(135deg,#0088ff 0%,#0066ff 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.why-left p{
+  color:#666;
+  line-height:1.8;
+  margin-bottom:40px;
+  font-size:16px;
+}
+
+.learn-btn{
+  display:inline-block;
+  background:linear-gradient(135deg,#0088ff 0%,#0066ff 100%);
+  color:white;
+  text-decoration:none;
+  padding:14px 36px;
+  border-radius:50px;
+  font-weight:600;
+  font-size:15px;
+  box-shadow:0 10px 30px rgba(0,136,255,0.25);
+  transition:all 0.3s ease;
+  border:none;
+  cursor:pointer;
+}
+
+.learn-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 40px rgba(0,136,255,0.35);
+}
+
+.features{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+}
+
+.feature-card{
+  background:white;
+  border-radius:16px;
+  padding:36px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.06);
+  border:1px solid #f0f0f0;
+  transition:all 0.3s ease;
+}
+
+.feature-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 35px rgba(0,136,255,0.1);
+  border-color:rgba(0,136,255,0.2);
+}
+
+.feature-card h3{
+  font-family:'Sora',sans-serif;
+  font-size:18px;
+  margin-bottom:12px;
+  font-weight:700;
+  color:#1a1a1a;
+}
+
+.feature-card p{
+  color:#666;
+  font-size:14px;
+  line-height:1.7;
+}
+
+/* CONTACT */
+
+.contact-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+}
+
+.contact-info h2{
+  font-family:'Sora',sans-serif;
+  font-size:48px;
+  margin-bottom:40px;
+  font-weight:800;
+  color:#1a1a1a;
+}
+
+.contact-item{
+  margin-bottom:32px;
+}
+
+.contact-item p{
+  color:#666;
+  font-size:16px;
+  line-height:1.8;
+}
+
+form{
+  background:white;
+  border-radius:20px;
+  padding:48px;
+  box-shadow:0 12px 40px rgba(0,0,0,0.08);
+  border:1px solid #f0f0f0;
+}
+
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  padding:14px 18px;
+  margin-bottom:20px;
+  border-radius:12px;
+  border:1px solid #e0e0e0;
+  font-family:'Inter',sans-serif;
+  outline:none;
+  font-size:14px;
+  transition:all 0.3s ease;
+  background:#f9f9f9;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:#0088ff;
+  background:white;
+  box-shadow:0 0 0 3px rgba(0,136,255,0.1);
+}
+
+textarea{
+  min-height:140px;
+  resize:none;
+}
+
+.submit-btn{
+  width:100%;
+  border:none;
+  background:linear-gradient(135deg,#0088ff 0%,#0066ff 100%);
+  color:white;
+  padding:16px;
+  border-radius:50px;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(0,136,255,0.25);
+  transition:all 0.3s ease;
+}
+
+.submit-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 40px rgba(0,136,255,0.35);
+}
+
+/* TESTIMONIALS */
+
+.testimonials{
+  background:linear-gradient(135deg,#0f0f1e 0%,#1a1a2e 50%,#16213e 100%);
+  padding:120px 0;
+  overflow:hidden;
+  position:relative;
+}
+
+.testimonials::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:radial-gradient(circle at 20% 50%,rgba(0,136,255,0.1) 0%,transparent 50%);
+  pointer-events:none;
+}
+
+.testimonials .section-title{
+  position:relative;
+  z-index:1;
+}
+
+.testimonials .section-title span{
+  color:#0088ff;
+}
+
+.testimonials .section-title h2{
+  color:white;
+}
+
+.testimonials-subtitle{
+  text-align:center;
+  color:#a0aec0;
+  font-size:16px;
+  max-width:650px;
+  margin:0 auto 70px;
+  line-height:1.8;
+  position:relative;
+  z-index:1;
+}
+
+.testimonials-track{
+  display:flex;
+  gap:24px;
+  animation:scroll-left 50s linear infinite;
+  width:fit-content;
+  position:relative;
+  z-index:1;
+}
+
+.testimonials-track:hover{
+  animation-play-state:paused;
+}
+
+@keyframes scroll-left{
+  0%{
+    transform:translateX(0);
+  }
+  100%{
+    transform:translateX(calc(-50% - 12px));
+  }
+}
+
+.review-card{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:16px;
+  padding:36px;
+  min-width:380px;
+  flex-shrink:0;
+  transition:all 0.4s ease;
+}
+
+.review-card:hover{
+  background:rgba(255,255,255,0.12);
+  border-color:rgba(0,136,255,0.5);
+  transform:translateY(-10px);
+}
+
+.review-header{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:24px;
+}
+
+.review-avatar{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#0088ff 0%,#00d4ff 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  font-weight:bold;
+  color:white;
+  flex-shrink:0;
+  box-shadow:0 8px 20px rgba(0,136,255,0.3);
+}
+
+.review-info h4{
+  color:white;
+  font-size:16px;
+  margin-bottom:4px;
+  font-weight:600;
+}
+
+.review-info p{
+  color:#a0aec0;
+  font-size:13px;
+  font-weight:500;
+}
+
+.stars{
+  display:flex;
+  gap:4px;
+  margin-bottom:18px;
+}
+
+.star{
+  color:#fbbf24;
+  font-size:16px;
+}
+
+.review-text{
+  color:#e2e8f0;
+  font-size:15px;
+  line-height:1.8;
+}
+
+/* FOOTER */
+
+footer{
+  padding:50px 0;
+  text-align:center;
+  color:#999;
+  border-top:1px solid #f0f0f0;
+  font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  .hero-wrap,
+  .why-wrap,
+  .contact-wrap{
+    grid-template-columns:1fr;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:55px;
+  }
+
+  .phone img{
+    width:100%;
+  }
+
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .form-row{
+    grid-template-columns:1fr;
+  }
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  .hero-wrap,
+  .why-wrap,
+  .contact-wrap{
+    grid-template-columns:1fr;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .hero{
+    padding-top:120px;
+    padding-bottom:80px;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .phone img{
+    width:100%;
+  }
+
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .form-row{
+    grid-template-columns:1fr;
+  }
+
+  .section-title h2{
+    font-size:42px;
+  }
+
+  .testimonials-subtitle{
+    font-size:15px;
+  }
+
+  .review-card{
+    min-width:300px;
+    padding:24px;
+  }
+
+  .review-text{
+    font-size:14px;
+  }
+
+  form{
+    padding:32px 24px;
+  }
+
+  .contact-info h2{
+    font-size:36px;
+  }
+
+  .why-left h2{
+    font-size:42px;
+  }
+
+  .stats{
+    flex-direction:column;
+    gap:40px;
+  }
+
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="container navbar">
+
+<div class="logo">
+<img src="Images/phonezone-logo.png.png" alt="PHONEZONE">
+</div>
+
+<ul class="nav-links">
+<li><a class="active" href="#">Home</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#why">Why Us</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<a href="#" class="book-btn">
+📅 Book A Repair
+</a>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="container hero-wrap">
+
+<div>
+
+<div class="badge">
+⭐ #1 Mobile Repair Store In Your City
+</div>
+
+<h1>
+We Fix It <br>
+<span>You Love It.</span>
+</h1>
+
+<p>
+Expert repair services for all smartphones.
+Quick, reliable and affordable.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#" class="call-btn">
+📞 Call Now
+</a>
+
+<a href="#" class="whatsapp-btn">
+🟢 WhatsApp Us
+</a>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<div class="stat-icon">🛡️</div>
+<div>
+<h3>2500+</h3>
+<p>Devices Repaired</p>
+</div>
+</div>
+
+<div class="stat">
+<div class="stat-icon">⭐</div>
+<div>
+<h3>4.9/5</h3>
+<p>Customer Rating</p>
+</div>
+</div>
+
+<div class="stat">
+<div class="stat-icon">⏰</div>
+<div>
+<h3>30 Min</h3>
+<p>Avg. Repair Time</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<div class="phone">
+<img src="Images/phones.png" alt="Mobile Phones">
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- IMAGE SLIDER / CAROUSEL -->
+
+<div class="slider-container">
+
+<div class="slider-wrapper">
+
+<div class="slides" id="sliderTrack">
+
+<!-- ===== REPLACE THESE IMAGE PATHS WITH YOUR POSTER IMAGES ===== -->
+
+<div class="slide active">
+<img src="Images/imagesposter1.PNG.png" alt="Premium Phone Repair Service" class="slide-image">
+<div class="slide-overlay"></div>
+<div class="slide-caption">
+<h3>Premium Phone Repair</h3>
+<p>Expert technicians, genuine parts, warranty support</p>
+</div>
+</div>
+
+<div class="slide">
+<img src="Images/imagesposter1.PNG.png" alt="Professional Mobile Solutions" class="slide-image">
+<div class="slide-overlay"></div>
+<div class="slide-caption">
+<h3>Professional Solutions</h3>
+<p>Fast, reliable, and affordable repairs</p>
+</div>
+</div>
+
+<div class="slide">
+<img src="Images/imagesposter1.PNG.png" alt="24/7 Customer Support" class="slide-image">
+<div class="slide-overlay"></div>
+<div class="slide-caption">
+<h3>Expert Support Team</h3>
+<p>Available round the clock for your needs</p>
+</div>
+</div>
+
+<div class="slide">
+<img src="Images/imagesposter1.PNG.png" alt="Trusted Repair Service" class="slide-image">
+<div class="slide-overlay"></div>
+<div class="slide-caption">
+<h3>Trusted Service</h3>
+<p>2500+ devices repaired with 4.9/5 rating</p>
+</div>
+</div>
+
+<!-- ===== IMAGE PATHS END - ADD YOUR IMAGES ABOVE ===== -->
+
+</div>
+
+<!-- LEFT ARROW -->
+<div class="slider-controls">
+<div class="slider-arrow" id="prevSlide">❮</div>
+<div class="slider-arrow" id="nextSlide">❯</div>
+</div>
+
+<!-- PAGINATION DOTS -->
+<div class="slider-dots" id="dotsContainer"></div>
+
+</div>
+
+</div>
+
+<!-- SERVICES -->
+
+
+
+<section id="services">
+
+<div class="container">
+
+<div class="section-title">
+<span>OUR SERVICES</span>
+<h2>What We Repair</h2>
+</div>
+
+<div class="services-grid">
+
+<div class="service-card">
+<div class="service-icon">📱</div>
+<h3>Screen Replacement</h3>
+<p>High quality screens with warranty.</p>
+<div class="price"></div>
+</div>
+
+<div class="service-card">
+<div class="service-icon">🔋</div>
+<h3>Battery Replacement</h3>
+<p>Long lasting batteries for all brands.</p>
+<div class="price"></div>
+</div>
+
+<div class="service-card">
+<div class="service-icon">💧</div>
+<h3>Water Damage Repair</h3>
+<p>Advanced cleaning & motherboard repair.</p>
+<div class="price"></div>
+</div>
+
+<div class="service-card">
+<div class="service-icon">📷</div>
+<h3>Camera Repair</h3>
+<p>Front & rear camera replacement.</p>
+<div class="price"></div>
+</div>
+
+<div class="service-card">
+<div class="service-icon">🔌</div>
+<h3>Charging Port Repair</h3>
+<p>Fix charging issues in no time.</p>
+<div class="price"></div>
+</div>
+
+<div class="service-card">
+<div class="service-icon">⚙️</div>
+<h3>Software Unlock</h3>
+<p>Unlock, update & software issues.</p>
+<div class="price"></div>
+</div>
+
+</div>
+
+<div style="text-align:center">
+<a href="#" class="view-btn">
+View All Services →
+</a>
+</div>
+
+</div>
+
+</section>
+
+<!-- WHY -->
+
+<section class="why" id="why">
+
+<div class="container why-wrap">
+
+<div class="why-left">
+
+<div class="section-title" style="text-align:left">
+<span>WHY CHOOSE US</span>
+</div>
+
+<h2>
+Trusted. Reliable. <br>
+<span>Professional.</span>
+</h2>
+
+<p>
+We provide the best repair experience with expert technicians and genuine parts.
+</p>
+
+<a href="#" class="learn-btn">
+Learn More About Us →
+</a>
+
+</div>
+
+<div class="features">
+
+<div class="feature-card">
+<h3>🛡️ Genuine Parts</h3>
+<p>We use only high quality genuine parts.</p>
+</div>
+
+<div class="feature-card">
+<h3>👨‍🔧 Expert Technicians</h3>
+<p>Skilled professionals with years of experience.</p>
+</div>
+
+<div class="feature-card">
+<h3>⚡ Quick Service</h3>
+<p>Most repairs completed within 30 minutes.</p>
+</div>
+
+<div class="feature-card">
+<h3>🏆 Warranty Support</h3>
+<p>Warranty on all repairs for your peace of mind.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="container">
+
+<div class="contact-wrap">
+
+<div class="contact-info">
+
+<div class="section-title" style="text-align:left">
+<span>CONTACT US</span>
+</div>
+
+<h2>Get In Touch</h2>
+
+<div class="contact-item">
+<p>📍 3104 N BELTLINE RD # 134 IRVING TX - 75062</p>
+</div>
+
+<div class="contact-item">
+<p>📞 469-410-5844 | 469-674-0666 | 469-881-0999</p>
+</div>
+
+<div class="contact-item">
+<p>📧 info@phonezone.com</p>
+</div>
+
+<div class="contact-item">
+<p>🕒 Mon - Sat : 10 AM - 8 PM</p>
+</div>
+
+</div>
+
+<form>
+
+<div class="form-row">
+
+<input type="text" placeholder="Your Name">
+
+<input type="text" placeholder="Phone Number">
+
+</div>
+
+<div class="form-row">
+
+<input type="email" placeholder="Email Address">
+
+<select>
+<option>Select Service</option>
+<option>Mobile Repairing</option>
+<option>Purchase New Phone</option>
+<option>Sell Phone</option>
+</select>
+
+</div>
+
+<textarea placeholder="Describe your issue"></textarea>
+
+<button class="submit-btn">
+✈️ Send Enquiry
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section class="testimonials">
+
+<div class="container">
+
+<div class="section-title">
+<span>CUSTOMER TESTIMONIALS</span>
+<h2>What Our Customers Say</h2>
+</div>
+
+<p class="testimonials-subtitle">
+Join thousands of satisfied customers who have experienced premium mobile repair services
+</p>
+
+<div class="testimonials-track" id="testimonialsTrack">
+
+<div class="review-card">
+<div class="review-header">
+<div class="review-avatar">⚡</div>
+<div class="review-info">
+<h4>Sarah Johnson</h4>
+<p>iPhone User</p>
+</div>
+</div>
+<div class="stars">
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+</div>
+<p class="review-text">"Fastest repair service I've ever used. My screen was fixed in under 30 minutes and looks brand new!"</p>
+</div>
+
+<div class="review-card">
+<div class="review-header">
+<div class="review-avatar">💎</div>
+<div class="review-info">
+<h4>Michael Chen</h4>
+<p>Samsung User</p>
+</div>
+</div>
+<div class="stars">
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+</div>
+<p class="review-text">"Looks brand new again. Highly recommended! The quality of work is exceptional and the pricing is fair."</p>
+</div>
+
+<div class="review-card">
+<div class="review-header">
+<div class="review-avatar">🔥</div>
+<div class="review-info">
+<h4>Emily Rodriguez</h4>
+<p>Google Pixel User</p>
+</div>
+</div>
+<div class="stars">
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+</div>
+<p class="review-text">"Professional team and affordable pricing. They really care about their customers and it shows!"</p>
+</div>
+
+<div class="review-card">
+<div class="review-header">
+<div class="review-avatar">🌟</div>
+<div class="review-info">
+<h4>David Thompson</h4>
+<p>OnePlus User</p>
+</div>
+</div>
+<div class="stars">
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+</div>
+<p class="review-text">"Amazing customer support and quick delivery. They kept me updated throughout the entire process."</p>
+</div>
+
+<div class="review-card">
+<div class="review-header">
+<div class="review-avatar">✨</div>
+<div class="review-info">
+<h4>Jessica Martinez</h4>
+<p>iPhone User</p>
+</div>
+</div>
+<div class="stars">
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+<span class="star">★</span>
+</div>
+<p class="review-text">"Very trusted service. Will use again. My phone works perfectly now and I'm very satisfied!"</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 PHONEZONE · Premium Mobile Repair Website
+</footer>
+
+<script>
+
+// Navbar scroll effect
+window.addEventListener('scroll', function(){
+  const nav = document.querySelector('nav');
+  if(window.scrollY > 50){
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// Testimonials Auto-Scroll Setup
+const testimonialsTrack = document.getElementById('testimonialsTrack');
+
+function setupTestimonialsScroll(){
+  const firstChild = testimonialsTrack.querySelector('.review-card');
+  
+  if(!firstChild) return;
+  
+  // Clone all review cards for seamless infinite scroll
+  const reviewCards = Array.from(testimonialsTrack.querySelectorAll('.review-card'));
+  
+  if(reviewCards.length > 0){
+    reviewCards.forEach(card => {
+      const clone = card.cloneNode(true);
+      testimonialsTrack.appendChild(clone);
+    });
+  }
+}
+
+// Initialize testimonials scroll on page load
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', setupTestimonialsScroll);
+} else {
+  setupTestimonialsScroll();
+}
+
+// Initialize slider
+const sliderTrack = document.getElementById('sliderTrack');
+const slides = document.querySelectorAll('.slide');
+const prevBtn = document.getElementById('prevSlide');
+const nextBtn = document.getElementById('nextSlide');
+const dotsContainer = document.getElementById('dotsContainer');
+let currentSlide = 0;
+let autoplayInterval;
+let isAutoplay = true;
+
+// Create pagination dots
+function createDots(){
+  slides.forEach((_, index) => {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if(index === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => {
+      goToSlide(index);
+      resetAutoplay();
+    });
+    dotsContainer.appendChild(dot);
+  });
+}
+
+// Go to specific slide
+function goToSlide(index){
+  // Remove active class from all slides and dots
+  slides.forEach(slide => slide.classList.remove('active'));
+  document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
+  
+  // Set current slide
+  currentSlide = index;
+  
+  // Add active class to current slide and dot
+  slides[currentSlide].classList.add('active');
+  document.querySelectorAll('.dot')[currentSlide].classList.add('active');
+}
+
+// Next slide
+function nextSlide(){
+  currentSlide = (currentSlide + 1) % slides.length;
+  goToSlide(currentSlide);
+}
+
+// Previous slide
+function prevSlide(){
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  goToSlide(currentSlide);
+}
+
+// Auto-play slider
+function startAutoplay(){
+  autoplayInterval = setInterval(nextSlide, 3000);
+}
+
+// Stop autoplay
+function stopAutoplay(){
+  clearInterval(autoplayInterval);
+}
+
+// Reset autoplay
+function resetAutoplay(){
+  if(isAutoplay){
+    stopAutoplay();
+    startAutoplay();
+  }
+}
+
+// Event listeners for arrows
+prevBtn.addEventListener('click', () => {
+  prevSlide();
+  resetAutoplay();
+});
+
+nextBtn.addEventListener('click', () => {
+  nextSlide();
+  resetAutoplay();
+});
+
+// Pause on hover
+const sliderContainer = document.querySelector('.slider-container');
+
+sliderContainer.addEventListener('mouseenter', () => {
+  stopAutoplay();
+});
+
+sliderContainer.addEventListener('mouseleave', () => {
+  if(isAutoplay){
+    startAutoplay();
+  }
+});
+
+// Swipe support for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+sliderContainer.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+}, false);
+
+sliderContainer.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+}, false);
+
+function handleSwipe(){
+  if(touchStartX - touchEndX > 50){
+    // Swiped left - go to next slide
+    nextSlide();
+    resetAutoplay();
+  }
+  if(touchEndX - touchStartX > 50){
+    // Swiped right - go to previous slide
+    prevSlide();
+    resetAutoplay();
+  }
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'ArrowLeft'){
+    prevSlide();
+    resetAutoplay();
+  }
+  if(e.key === 'ArrowRight'){
+    nextSlide();
+    resetAutoplay();
+  }
+});
+
+// Initialize slider
+createDots();
+startAutoplay();
+
+// Smooth active link highlight
+
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = document.querySelectorAll('section');
+
+window.addEventListener('scroll', function(){
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if(scrollY >= sectionTop - 200){
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if(link.getAttribute('href').slice(1) === current){
+      link.classList.add('active');
+    }
+  });
+});
+
+</script>
+
+</body>
+</html>
